@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { 
   Plane, 
   GraduationCap, 
@@ -19,56 +20,64 @@ const Services = () => {
       title: "移民服务",
       description: "荷兰、意大利、德国移民咨询与办理",
       features: ["投资移民", "技术移民", "家庭团聚", "永居申请"],
-      color: "bg-blue-50 text-blue-600"
+      color: "bg-blue-50 text-blue-600",
+      path: "/services/immigration"
     },
     {
       icon: GraduationCap,
       title: "留学服务",
       description: "欧洲名校申请与留学规划",
       features: ["院校申请", "签证办理", "语言培训", "住宿安排"],
-      color: "bg-green-50 text-green-600"
+      color: "bg-green-50 text-green-600",
+      path: "/services/education"
     },
     {
       icon: Users,
       title: "咨询顾问",
       description: "专业移民与商务咨询服务",
       features: ["政策解读", "方案定制", "风险评估", "流程指导"],
-      color: "bg-purple-50 text-purple-600"
+      color: "bg-purple-50 text-purple-600",
+      path: "/services/consulting"
     },
     {
       icon: Building,
       title: "公司注册",
       description: "欧洲公司设立与企业服务",
       features: ["公司注册", "银行开户", "商标注册", "许可申请"],
-      color: "bg-orange-50 text-orange-600"
+      color: "bg-orange-50 text-orange-600",
+      path: "/services/registration"
     },
     {
       icon: Calculator,
       title: "财务税务",
       description: "专业财务管理与税务筹划",
       features: ["记账报税", "税务筹划", "财务审计", "合规咨询"],
-      color: "bg-red-50 text-red-600"
+      color: "bg-red-50 text-red-600",
+      path: "/services/finance"
     },
     {
       icon: ShoppingCart,
       title: "电商服务",
       description: "跨境电商与本地化运营",
       features: ["平台入驻", "运营推广", "供应链管理", "本地化服务"],
-      color: "bg-indigo-50 text-indigo-600"
+      color: "bg-indigo-50 text-indigo-600",
+      path: "/services/ecommerce"
     },
     {
       icon: Globe,
       title: "网站开发",
       description: "专业网站设计与开发服务",
       features: ["网站设计", "系统开发", "SEO优化", "维护更新"],
-      color: "bg-teal-50 text-teal-600"
+      color: "bg-teal-50 text-teal-600",
+      path: "/services/development"
     },
     {
       icon: Briefcase,
       title: "商务代理",
       description: "全方位商务代理与支持服务",
       features: ["文件代办", "翻译认证", "商务洽谈", "项目管理"],
-      color: "bg-yellow-50 text-yellow-600"
+      color: "bg-yellow-50 text-yellow-600",
+      path: "/services/business"
     }
   ];
 
@@ -116,9 +125,11 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button variant="outline" size="sm" className="w-full group-hover:bg-primary group-hover:text-primary-foreground">
-                    咨询客服
-                  </Button>
+                  <Link to={service.path}>
+                    <Button variant="outline" size="sm" className="w-full group-hover:bg-primary group-hover:text-primary-foreground">
+                      查看详情
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             );
