@@ -12,6 +12,42 @@ import { ArrowLeft, Send, MessageCircle, Phone, CheckCircle } from "lucide-react
 import { useToast } from "@/components/ui/use-toast";
 import { sendConsultationData, getConsultantByService, type ConsultationData } from "@/lib/consultation";
 
+// 根据服务类型获取返回链接
+const getBackLink = (serviceType: string): string => {
+  const serviceRoutes: { [key: string]: string } = {
+    '荷兰移民服务': '/services/immigration',
+    '德国移民服务': '/services/immigration', 
+    '意大利移民服务': '/services/immigration',
+    '欧洲留学服务': '/services/education',
+    '公司注册服务': '/services/registration',
+    '财务税务服务': '/services/finance',
+    '电商服务': '/services/ecommerce',
+    '网站开发服务': '/services/development',
+    '商务代理服务': '/services/business',
+    '移民资格评估': '/', // 来自首页的免费评估
+  };
+  
+  return serviceRoutes[serviceType] || '/';
+};
+
+// 根据服务类型获取返回文本
+const getBackText = (serviceType: string): string => {
+  const serviceRoutes: { [key: string]: string } = {
+    '荷兰移民服务': '返回移民服务',
+    '德国移民服务': '返回移民服务', 
+    '意大利移民服务': '返回移民服务',
+    '欧洲留学服务': '返回留学服务',
+    '公司注册服务': '返回公司注册',
+    '财务税务服务': '返回财务税务',
+    '电商服务': '返回电商服务',
+    '网站开发服务': '返回网站开发',
+    '商务代理服务': '返回商务代理',
+    '移民资格评估': '返回首页',
+  };
+  
+  return serviceRoutes[serviceType] || '返回首页';
+};
+
 const ConsultationForm = () => {
   const [searchParams] = useSearchParams();
   const serviceType = searchParams.get('service') || '通用咨询';
@@ -150,11 +186,11 @@ const ConsultationForm = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Link 
-              to={`/services/${serviceType.toLowerCase().replace(/\s+/g, '-')}`}
+              to={getBackLink(serviceType)}
               className="inline-flex items-center text-muted-foreground hover:text-primary mb-8 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              返回服务页面
+              {getBackText(serviceType)}
             </Link>
             
             <div className="text-center mb-8">
