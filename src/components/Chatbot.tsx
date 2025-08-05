@@ -144,12 +144,16 @@ const Chatbot = () => {
       
       // 更精准的关键词匹配和上下文理解
       if (contextQuery.includes('荷兰') || query.includes('荷兰')) {
-        if (query.includes('条件') || query.includes('要求')) {
-          fallbackContent = "🇳🇱 荷兰移民条件详解：\n\n• **高技能移民**：本科以上学历，年薪≥56,000欧元\n• **创业移民**：投资金额≥25万欧元\n• **投资移民**：符合要求的商业投资\n• **家庭团聚**：配偶/子女签证\n\n联系专业顾问获取个性化评估：📞 13720010295";
-        } else if (query.includes('流程') || query.includes('步骤')) {
-          fallbackContent = "📋 荷兰移民申请流程：\n\n1️⃣ 资格评估与方案设计\n2️⃣ 准备申请材料\n3️⃣ 递交申请文件\n4️⃣ 等待审批结果\n5️⃣ 获得居留许可\n\n整个周期通常为3-6个月。微信咨询：LydiaFSZ";
+        if (query.includes('蓝卡') || query.includes('欧盟蓝卡')) {
+          fallbackContent = "🇳🇱 荷兰欧盟蓝卡（门槛最低）：\n\n✅ **申请条件**：\n• 大专以上学历（3年全日制）\n• 年薪€58,670以上\n• 无雇主资质要求\n• 无严格居住要求\n\n🎯 **优势**：\n• 一次获得4年居留许可\n• 5年可转永居和入籍\n• 享受与欧盟公民同等福利\n\n📞 咨询顾问：13720010295";
+        } else if (query.includes('优才') || query.includes('优才计划')) {
+          fallbackContent = "🇳🇱 荷兰优才计划（最快移民）：\n\n✅ **申请条件**：\n• 无语言、学历、资产要求\n• 年龄18-55周岁\n• 无犯罪记录即可\n\n⚡ **优势**：\n• 3-6个月快速获批\n• 一人申请全家移民\n• 享受30%工资税减免\n• 零首付购房购车\n\n💬 微信咨询：LydiaFSZ";
+        } else if (query.includes('条件') || query.includes('要求')) {
+          fallbackContent = "🇳🇱 荷兰移民条件对比：\n\n💙 **欧盟蓝卡**（门槛低）：\n• 大专学历，年薪€58,670\n• 无雇主资质要求\n\n⚡ **优才计划**（无门槛）：\n• 无语言学历要求\n• 3-6个月获批\n\n🏆 **高技能移民**：\n• 本科学历，年薪€56,000\n\n📞 专业评估：13720010295";
+        } else if (query.includes('流程') || query.includes('步骤') || query.includes('怎么办')) {
+          fallbackContent = "📋 荷兰移民申请流程：\n\n1️⃣ 免费资格评估\n2️⃣ 选择最适合的移民方案\n3️⃣ 准备申请材料\n4️⃣ 递交移民申请\n5️⃣ 获得居留许可\n\n⏰ 时间周期：\n• 优才计划：3-6个月\n• 欧盟蓝卡：3-6个月\n• 高技能移民：3-6个月\n\n💬 微信咨询：LydiaFSZ";
         } else {
-          fallbackContent = "🇳🇱 荷兰移民服务：我们提供高技能移民、投资移民、创业移民等多种方案。具体条件和申请流程请联系我们的专业顾问详细咨询。\n\n联系方式：📞 13720010295 | 💬 微信：LydiaFSZ";
+          fallbackContent = "🇳🇱 荷兰移民服务（3种方案）：\n\n💙 **欧盟蓝卡**：大专学历即可，门槛最低\n⚡ **优才计划**：无任何要求，最快获批\n🏆 **高技能移民**：传统方案，稳定可靠\n\n🎯 荷兰优势：30%税收减免、零首付购房、全球医疗保险\n\n📞 13720010295 | 💬 LydiaFSZ";
         }
       } else if (contextQuery.includes('德国') || query.includes('德国')) {
         if (query.includes('蓝卡')) {
@@ -160,15 +164,27 @@ const Chatbot = () => {
       } else if (contextQuery.includes('意大利') || query.includes('意大利')) {
         fallbackContent = "🇮🇹 意大利移民服务：我们提供投资移民、居留签证等服务。意大利生活环境优美，具体要求和费用请联系专业顾问详细了解。\n\n联系方式：📞 13720010295 | 💬 微信：LydiaFSZ";
       } else if (query.includes('留学')) {
-        fallbackContent = "🎓 欧洲留学服务：\n\n• **荷兰留学**：英语授课项目丰富，学费相对较低\n• **德国留学**：公立大学免学费，教育质量高\n• **意大利留学**：艺术、设计专业世界领先\n\n提供专业选择、院校申请、签证办理一条龙服务。微信：LydiaFSZ";
-      } else if (query.includes('企业') || query.includes('注册')) {
-        fallbackContent = "🏢 企业注册服务：\n\n• 荷兰、德国、意大利公司注册\n• 账户开设与银行服务\n• 税务策划与申报\n• 商标注册与知识产权\n\n专业团队提供一对一服务。联系顾问：📞 13720010295";
-      } else if (query.includes('费用') || query.includes('价格') || query.includes('多少钱')) {
-        fallbackContent = "💰 关于服务费用：\n\n我们会根据您的具体情况制定个性化方案。不同国家和项目的费用差异较大，包括：\n\n• 政府费用\n• 律师费用\n• 翻译认证费\n• 咨询服务费\n\n请联系专业顾问获得详细报价：📞 13720010295";
-      } else if (query.includes('电商')) {
-        fallbackContent = "🛍️ 欧洲电商落地服务：\n\n• 平台选择与注册\n• 产品上架与优化\n• 海外仓储与物流\n• VAT税务申报\n• 品牌推广与营销\n\n帮助中国商家在欧洲站稳脚跟。联系：📞 13720010295";
+        if (query.includes('条件') || query.includes('要求')) {
+          fallbackContent = "🎓 欧洲留学申请条件：\n\n🇳🇱 **荷兰留学**：\n• 雅思6.5+或托福80+\n• GPA 3.0以上\n• 学费相对较低\n\n🇩🇪 **德国留学**：\n• APS审核 + 德语TestDaF 4级\n• 公立大学免学费\n\n🇮🇹 **意大利留学**：\n• 意大利语B1+ 或英语雅思6.0+\n• 艺术设计专业世界领先\n\n💬 微信：LydiaFSZ";
+        } else {
+          fallbackContent = "🎓 欧洲留学服务：\n\n• **荷兰留学**：英语授课丰富，学费低\n• **德国留学**：公立大学免费，质量高\n• **意大利留学**：艺术设计世界领先\n\n🎯 服务包括：院校申请、签证办理、语言培训、住宿安排\n\n💬 微信咨询：LydiaFSZ";
+        }
+      } else if (query.includes('公司') || query.includes('注册') || query.includes('企业')) {
+        fallbackContent = "🏢 欧洲公司注册服务：\n\n🇳🇱 **荷兰**：€1起注册，税收优惠\n🇩🇪 **德国**：€25,000起，欧洲中心\n🇮🇹 **意大利**：€1起注册，手续简化\n\n📋 **服务包括**：\n• 公司注册 + 银行开户\n• 税务登记 + 商标注册\n• 许可申请 + 后续维护\n\n📞 一对一服务：13720010295";
+      } else if (query.includes('费用') || query.includes('价格') || query.includes('多少钱') || query.includes('报价')) {
+        fallbackContent = "💰 服务费用说明：\n\n❗ **重要提醒**：我们不在聊天中提供具体报价\n\n💡 **费用因素**：\n• 不同国家政策不同\n• 个人条件影响方案\n• 服务内容决定价格\n• 政府费用 + 服务费用\n\n🎯 **获取报价方式**：\n• 免费咨询评估\n• 量身定制方案\n• 透明费用明细\n\n📞 专业顾问：13720010295";
+      } else if (query.includes('电商') || query.includes('bol')) {
+        fallbackContent = "🛍️ 欧洲电商服务：\n\n📦 **bol.com荷兰**：\n• 专业选品 + 代发货\n• 荷兰最大电商平台\n\n🏪 **亚马逊欧洲**：\n• 多站点运营\n• 广告推广优化\n\n🌐 **独立站建设**：\n• 品牌官网搭建\n• SEO推广营销\n\n📋 **全程服务**：选品→运营→发货→客服\n\n📞 电商专家：13720010295";
       } else if (query.includes('网站') || query.includes('开发')) {
-        fallbackContent = "💻 网站开发服务：\n\n• 企业官网设计开发\n• 电商平台搭建\n• 多语言网站制作\n• SEO优化与推广\n• 网站维护与更新\n\n符合欧美用户体验的现代化设计。微信：LydiaFSZ";
+        fallbackContent = "💻 网站开发服务：\n\n🎨 **设计开发**：\n• 企业官网 + 电商平台\n• 符合欧美用户习惯\n• 响应式设计\n\n🌍 **技术特色**：\n• React/Vue前端技术\n• 多语言国际化\n• SEO优化内置\n\n⚡ **开发周期**：\n• 企业官网：6-12周\n• 电商平台：8-16周\n\n💬 技术咨询：LydiaFSZ";
+      } else if (query.includes('展会') || query.includes('搭建')) {
+        fallbackContent = "🏢 展会搭建服务：\n\n🎨 **专业服务**：\n• 展位设计 + 现场搭建\n• 汉诺威工业展、法兰克福展\n• 展会期间现场管理\n\n✨ **成功案例**：\n• 300平米展位获最佳设计奖\n• 客户签约订单超500万欧元\n\n⏰ **服务周期**：展会前4-6周开始\n💰 **服务费用**：€3,000起\n\n📞 展会专家：13720010295";
+      } else if (query.includes('地陪') || query.includes('翻译') || query.includes('陪同')) {
+        fallbackContent = "🗺️ 地陪翻译服务：\n\n👥 **专业团队**：\n• 欧洲主要城市地陪网络\n• 多语言专业翻译\n• 商务接待 + 城市向导\n\n🎯 **服务内容**：\n• 全程陪同翻译\n• 商务洽谈支持\n• 突发情况处理\n\n⏰ **预约时间**：提前1-2周\n💰 **服务费用**：€300/天起\n\n💬 微信预约：LydiaFSZ";
+      } else if (query.includes('财务') || query.includes('税务') || query.includes('记账') || query.includes('VAT')) {
+        fallbackContent = "💼 财务税务服务：\n\n📊 **记账报税**：\n• 月度财务处理\n• 季度税务申报\n• 年度财务审计\n\n🏦 **税务筹划**：\n• 合理降低税负15-30%\n• 跨国税务结构设计\n• VAT注册申报退税\n\n💰 **服务费用**：\n• 记账报税：€300/月起\n• VAT申报：€150/期起\n\n📞 财务专家：13720010295";
+      } else if (query.includes('咨询') || query.includes('顾问') || query.includes('评估')) {
+        fallbackContent = "👥 专业咨询顾问：\n\n🎯 **咨询服务**：\n• 免费移民资格评估\n• 个性化方案定制\n• 政策解读分析\n• 风险评估指导\n\n💼 **商务咨询**：\n• 投资项目评估\n• 市场分析调研\n• 法律合规咨询\n• 项目管理服务\n\n⏰ **响应时间**：24小时内回复\n🆓 **初步咨询**：完全免费\n\n📞 专业顾问：13720010295";
       } else {
         fallbackContent = "🌟 感谢咨询WEDESEN！我们专注欧洲服务12年，累计3000+成功案例。\n\n🌍 **核心服务**：\n• 🇳🇱 荷兰移民：高技能、投资、创业移民\n• 🇩🇪 德国移民：欧盟蓝卡、企业家签证\n• 🇮🇹 意大利移民：投资移民、居留签证\n• 🎓 留学服务：欧洲名校申请指导\n• 🏢 商务服务：企业注册、财务税务\n• 🛍️ 电商落地服务\n• 💻 网站开发服务\n\n📞 **联系方式**：13720010295\n💬 **微信**：LydiaFSZ\n🕒 **工作时间**：周一至周五 9:00-18:00";
       }
