@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Phone, MessageCircle, Clock, Users, Award, MapPin } from "lucide-react";
+import { ArrowLeft, Phone, MessageCircle, Clock, Users, Award, MapPin, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface ServicePageLayoutProps {
@@ -129,14 +129,27 @@ const ServicePageLayout = ({
                       </ol>
                     </div>
                     
-                    <div className="flex items-center justify-between pt-4 border-t">
-                      <div className="flex items-center text-sm text-muted-foreground">
-                        <Clock className="w-4 h-4 mr-1" />
-                        {service.timeline}
+                    <div className="pt-4 border-t space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-sm text-muted-foreground">
+                          <Clock className="w-4 h-4 mr-1" />
+                          {service.timeline}
+                        </div>
+                        <div className="text-sm font-medium text-primary">
+                          {service.price}
+                        </div>
                       </div>
-                      <div className="text-sm font-medium text-primary">
-                        {service.price}
-                      </div>
+                      
+                      <Button 
+                        asChild 
+                        className="w-full" 
+                        variant="outline"
+                      >
+                        <Link to={`/consultation?service=${encodeURIComponent(service.title)}`}>
+                          <FileText className="w-4 h-4 mr-2" />
+                          免费咨询
+                        </Link>
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
