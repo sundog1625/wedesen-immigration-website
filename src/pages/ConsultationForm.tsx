@@ -35,6 +35,7 @@ const ConsultationForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const serviceOptions = [
+    '移民资格评估',
     '荷兰移民服务',
     '德国移民服务', 
     '意大利移民服务',
