@@ -79,10 +79,25 @@ const Chatbot = () => {
     } catch (error) {
       console.error("Chat error:", error);
       
-      // Fallback response when Edge Function is not set up
+      // Intelligent fallback based on user input
+      let fallbackContent = "";
+      const query = inputValue.toLowerCase();
+      
+      if (query.includes('荷兰')) {
+        fallbackContent = "荷兰移民服务：我们提供高技能移民、投资移民、创业移民等多种方案。具体条件和申请流程请联系我们的专业顾问详细咨询。\n\n联系方式：📞 13720010295 | 💬 微信：LydiaFSZ";
+      } else if (query.includes('德国')) {
+        fallbackContent = "德国移民服务：我们提供欧盟蓝卡、投资移民等专业服务。德国移民政策相对友好，具体申请条件请联系顾问获得个性化方案。\n\n联系方式：📞 13720010295 | 💬 微信：LydiaFSZ";
+      } else if (query.includes('意大利')) {
+        fallbackContent = "意大利移民服务：我们提供投资移民、居留签证等服务。意大利生活环境优美，具体要求和费用请联系专业顾问详细了解。\n\n联系方式：📞 13720010295 | 💬 微信：LydiaFSZ";
+      } else if (query.includes('费用') || query.includes('价格') || query.includes('多少钱')) {
+        fallbackContent = "关于服务费用，我们会根据您的具体情况制定个性化方案。不同国家和项目的费用差异较大，请联系我们的专业顾问获得详细报价和咨询。\n\n联系方式：📞 13720010295 | 💬 微信：LydiaFSZ";
+      } else {
+        fallbackContent = "感谢咨询WEDESEN！我们专注欧洲移民服务12年，累计3000+成功案例。\n\n🌍 主营服务：\n• 荷兰移民：高技能移民、投资移民\n• 德国移民：欧盟蓝卡、企业家签证\n• 意大利移民：投资移民、居留签证\n• 留学服务：欧洲名校申请指导\n• 商务服务：企业注册、财务税务\n\n📞 联系方式：13720010295\n💬 微信：LydiaFSZ\n🕒 工作时间：周一至周五 9:00-18:00";
+      }
+      
       const fallbackMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: "感谢您的咨询！我们的专业顾问会尽快为您解答。您也可以直接拨打我们的热线电话获得即时帮助。",
+        content: fallbackContent + "\n\n如需详细咨询和个性化方案，请联系专业顾问。",
         role: "assistant",
         timestamp: new Date(),
       };
