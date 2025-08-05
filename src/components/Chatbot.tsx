@@ -67,7 +67,12 @@ const Chatbot = () => {
       try {
         const parsedHistory = JSON.parse(savedHistory);
         if (parsedHistory.length > 1) {
-          setMessages(parsedHistory);
+          // 确保timestamp是Date对象
+          const fixedHistory = parsedHistory.map((message: any) => ({
+            ...message,
+            timestamp: new Date(message.timestamp)
+          }));
+          setMessages(fixedHistory);
         }
       } catch (error) {
         console.error('Failed to load chat history:', error);
@@ -325,10 +330,16 @@ const Chatbot = () => {
                           : "text-muted-foreground"
                       }`}
                     >
-                      {message.timestamp.toLocaleTimeString("zh-CN", {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
+                      {message.timestamp instanceof Date 
+                        ? message.timestamp.toLocaleTimeString("zh-CN", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })
+                        : new Date(message.timestamp).toLocaleTimeString("zh-CN", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })
+                      }
                     </p>
                   </div>
                 </div>
