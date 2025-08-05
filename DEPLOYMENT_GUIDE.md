@@ -11,9 +11,7 @@
 
 ### 1. 数据库迁移 (必须执行)
 
-请登录到 [Supabase Dashboard](https://supabase.com/dashboard/project/zvuxgccegfyyjqipjakw) 并执行以下SQL：
-
-```sql
+请登录到 [Supabase Dashboard](https://supabase.com/dashboard/project/zvuxgccegfyyjqipjakw) 的SQL Editor，并执行以下SQL代码（**注意：不要包含```标记，只复制纯SQL代码**）：
 -- 创建咨询表来存储用户提交的咨询申请
 CREATE TABLE IF NOT EXISTS consultations (
   id TEXT PRIMARY KEY,
@@ -68,7 +66,6 @@ COMMENT ON COLUMN consultations.questions IS '具体咨询问题';
 COMMENT ON COLUMN consultations.contact_time IS '方便联系时间';
 COMMENT ON COLUMN consultations.contact_method IS '首选联系方式';
 COMMENT ON COLUMN consultations.status IS '处理状态：pending-待处理，contacted-已联系，completed-已完成';
-```
 
 ### 2. 部署Edge Function
 
