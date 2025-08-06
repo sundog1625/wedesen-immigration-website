@@ -10,7 +10,7 @@ import {
 } from 'recharts';
 import { 
   Eye, Users, MousePointer, Clock, Globe, Smartphone, 
-  Desktop, Calendar, TrendingUp, Download, RefreshCw, Lock
+  Monitor, Calendar, TrendingUp, Download, RefreshCw, Lock
 } from "lucide-react";
 import { analytics, PageView, AnalyticsEvent, UserSession } from "@/lib/analytics";
 import SEOHead from "@/components/SEOHead";
@@ -392,7 +392,7 @@ const AdminDashboard = () => {
                   <div key={index} className="flex justify-between items-center">
                     <div className="flex items-center">
                       {device.device === 'mobile' ? <Smartphone className="w-4 h-4 mr-2" /> :
-                       device.device === 'desktop' ? <Desktop className="w-4 h-4 mr-2" /> :
+                       device.device === 'desktop' ? <Monitor className="w-4 h-4 mr-2" /> :
                        <Globe className="w-4 h-4 mr-2" />}
                       <span className="text-sm capitalize">{device.device}</span>
                     </div>
