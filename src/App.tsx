@@ -21,8 +21,8 @@ import Development from "./pages/services/Development";
 import Business from "./pages/services/Business";
 import ConsultationFormEnhanced from "./pages/ConsultationFormEnhanced";
 import AdminDashboard from "./pages/AdminDashboard";
-import WhyDutchImmigration from "./pages/WhyDutchImmigration";
-import WhyDutchEducation from "./pages/WhyDutchEducation";
+import WhyDutchImmigrationSimple from "./pages/WhyDutchImmigrationSimple";
+import WhyDutchEducationSimple from "./pages/WhyDutchEducationSimple";
 import TestDeployment from "./pages/TestDeployment";
 import Simple from "./pages/Simple";
 
@@ -48,8 +48,8 @@ const AppRoutes = () => {
       <Route path="/services/business" element={<Business />} />
       <Route path="/consultation" element={<ConsultationFormEnhanced />} />
       <Route path="/admin" element={<AdminDashboard />} />
-      <Route path="/why-dutch-immigration" element={<WhyDutchImmigration />} />
-      <Route path="/why-dutch-education" element={<WhyDutchEducation />} />
+      <Route path="/why-dutch-immigration" element={<WhyDutchImmigrationSimple />} />
+      <Route path="/why-dutch-education" element={<WhyDutchEducationSimple />} />
       <Route path="/test-deployment" element={<TestDeployment />} />
       <Route path="/simple" element={<Simple />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
