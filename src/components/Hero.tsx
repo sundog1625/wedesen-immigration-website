@@ -27,11 +27,11 @@ const Hero = () => {
               WEDESEN · 德森国际商务
             </span>
             <h1 className="text-5xl md:text-7xl font-light text-white leading-tight mb-6">
-              <span className="font-normal">连接东西</span>
-              <span className="text-accent block mt-2">成就未来</span>
+              <span className="font-normal">专业欧洲移民服务</span>
+              <span className="text-accent block mt-2">连接东西，成就未来</span>
             </h1>
             <p className="text-lg text-white/80 leading-relaxed mb-8 max-w-2xl font-light">
-              深耕欧洲市场12年，为您提供荷兰、意大利、德国移民定制方案，以及全方位商务服务支持
+              WEDESEN德森深耕欧洲市场12年，专业提供荷兰技术移民、德国蓝卡申请、意大利投资移民等定制化移民方案，以及全方位商务服务支持
             </p>
           </div>
 

@@ -42,7 +42,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "邮件联系",
-      content: "咨询客服获取",
+      content: "wedeseneu@gmail.com",
       subtitle: "专业团队｜24小时内回复",
       color: "bg-accent/20 text-accent"
     },

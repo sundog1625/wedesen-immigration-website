@@ -114,7 +114,7 @@ npm run dev
 ## 📞 联系方式
 
 - **热线电话**: +31 6 8888 9999
-- **邮箱**: info@wedesen.com
+- **邮箱**: wedeseneu@gmail.com
 - **微信**: WEDESEN-EU
 - **地址**: Herengracht 420, Amsterdam, Netherlands
 

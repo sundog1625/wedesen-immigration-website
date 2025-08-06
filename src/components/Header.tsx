@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Phone, Mail, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "@/components/Logo";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useAnalytics } from "@/lib/analytics";
 
 const Header = () => {
@@ -231,9 +232,10 @@ const Header = () => {
               </div>
               <div className="flex items-center space-x-1 text-muted-foreground">
                 <Mail className="w-4 h-4" />
-                <span>咨询客服获取邮箱</span>
+                <span>wedeseneu@gmail.com</span>
               </div>
             </div>
+            <LanguageSwitcher />
             <Button variant="hero" size="sm" asChild>
               <Link to="/consultation?service=通用咨询" onClick={handleConsultationClick}>
                 免费咨询
@@ -428,7 +430,7 @@ const Header = () => {
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <Mail className="w-4 h-4" />
-                  <span>咨询客服获取邮箱</span>
+                  <span>wedeseneu@gmail.com</span>
                 </div>
               </div>
             </nav>

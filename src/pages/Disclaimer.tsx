@@ -156,7 +156,7 @@ const Disclaimer = () => {
               <ul className="list-none text-muted-foreground space-y-2">
                 <li><strong>电话：</strong>13720010295</li>
                 <li><strong>微信：</strong>LydiaFSZ</li>
-                <li><strong>邮箱：</strong>请通过电话或微信获取</li>
+                <li><strong>邮箱：</strong>wedeseneu@gmail.com</li>
               </ul>
             </section>
           </div>

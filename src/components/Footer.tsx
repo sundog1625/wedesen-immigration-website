@@ -32,7 +32,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2 text-sm">
                 <Mail className="w-4 h-4" />
-                <span>咨询客服获取邮箱</span>
+                <span>wedeseneu@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2 text-sm">
                 <MapPin className="w-4 h-4" />

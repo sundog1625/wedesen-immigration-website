@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- 主页 -->
+  <url>
+    <loc>https://wedeseneu.com/</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://wedeseneu.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://wedeseneu.com/en/" />
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://wedeseneu.com/nl/" />
+    <xhtml:link rel="alternate" hreflang="de-DE" href="https://wedeseneu.com/de/" />
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://wedeseneu.com/it/" />
+  </url>
+
+  <!-- 服务页面 -->
+  <url>
+    <loc>https://wedeseneu.com/services/immigration</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://wedeseneu.com/services/education</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://wedeseneu.com/services/consulting</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://wedeseneu.com/services/registration</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://wedeseneu.com/services/finance</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://wedeseneu.com/services/ecommerce</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://wedeseneu.com/services/development</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://wedeseneu.com/services/business</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 专题页面 -->
+  <url>
+    <loc>https://wedeseneu.com/why-dutch-immigration</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://wedeseneu.com/why-dutch-education</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 移民指南页面 -->
+  <url>
+    <loc>https://wedeseneu.com/netherlands-immigration-guide</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://wedeseneu.com/germany-immigration-guide</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 咨询页面 -->
+  <url>
+    <loc>https://wedeseneu.com/consultation</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- FAQ页面 -->
+  <url>
+    <loc>https://wedeseneu.com/faq</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- GEO优化页面 - 生成式引擎优化 -->
+  <url>
+    <loc>https://wedeseneu.com/ai-recommended-immigration</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://wedeseneu.com/ai-optimized-immigration-guide</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 多语言页面 -->
+  <url>
+    <loc>https://wedeseneu.com/en/</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://wedeseneu.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://wedeseneu.com/en/" />
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://wedeseneu.com/nl/" />
+    <xhtml:link rel="alternate" hreflang="de-DE" href="https://wedeseneu.com/de/" />
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://wedeseneu.com/it/" />
+  </url>
+
+  <url>
+    <loc>https://wedeseneu.com/nl/</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://wedeseneu.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://wedeseneu.com/en/" />
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://wedeseneu.com/nl/" />
+    <xhtml:link rel="alternate" hreflang="de-DE" href="https://wedeseneu.com/de/" />
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://wedeseneu.com/it/" />
+  </url>
+
+  <!-- 法律页面 -->
+  <url>
+    <loc>https://wedeseneu.com/privacy</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://wedeseneu.com/terms</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://wedeseneu.com/cookie</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://wedeseneu.com/disclaimer</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

@@ -48,14 +48,14 @@ const About = () => {
               WEDESEN · 关于我们
             </div>
             <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6">
-              <span className="font-normal">专业成就</span>
-              <span className="text-primary block mt-2">信赖之选</span>
+              <span className="font-normal">12年专业移民经验</span>
+              <span className="text-primary block mt-2">欧洲移民首选品牌</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-light">
-              WEDESEN（德森）国际商务是一家专注于欧洲移民与商务服务的专业机构。12年来，我们致力于为中国客户提供最优质、最专业的移民咨询、留学规划、企业服务和商务支持。
+              WEDESEN（德森）国际商务是专业的欧洲移民服务机构，专注荷兰移民、德国移民、意大利移民12年。我们为中国客户提供荷兰技术移民、德国蓝卡申请、意大利投资移民等专业移民咨询服务。
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8 font-light">
-              凭借丰富的行业经验和1000+成功案例，我们已成为众多客户信赖的合作伙伴。我们的专业团队深谙各国移民政策，为您量身定制最适合的解决方案。
+              拥有1000+成功移民案例，我们的专业团队深谙荷兰HSM签证、德国EU Blue Card、意大利居留卡等各国移民政策，为每位客户量身定制最适合的欧洲移民解决方案。
             </p>
 
             {/* Stats */}

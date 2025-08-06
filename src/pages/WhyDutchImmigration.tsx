@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import SEOHead from "@/components/SEOHead";
+import SEOHead, { dutchImmigrationSchema } from "@/components/SEOHead";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -150,9 +150,11 @@ const WhyDutchImmigration = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
-        title="为什么选择移民荷兰？享受世界顶级福利制度 - WEDESEN德森国际"
-        description="荷兰移民优势详解：世界顶级社会福利、免费教育医疗、优越工作环境。专业移民顾问为您定制荷兰移民方案，享受欧洲高品质生活。"
-        keywords="荷兰移民,荷兰福利,荷兰社会保障,荷兰教育,荷兰医疗,欧洲移民,荷兰居留权"
+        title="荷兰移民优势详解 - 世界顶级福利制度 | WEDESEN德森专业移民服务"
+        description="荷兰移民12大优势：世界第3幸福指数、免费医疗教育、HSM技术移民、欧盟护照、儿童津贴€293/月。WEDESEN德森专业荷兰移民咨询，成功率高。"
+        keywords={["荷兰移民", "荷兰技术移民", "荷兰HSM", "荷兰福利", "荷兰居留权", "荷兰永居", "荷兰护照", "荷兰投资移民", "荷兰创业移民", "欧盟移民", "WEDESEN德森"]}
+        url="https://wedeseneu.com/why-dutch-immigration"
+        structuredData={dutchImmigrationSchema}
       />
       <Header />
 

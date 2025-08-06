@@ -105,7 +105,7 @@ const sendEmailNotification = async (record: ConsultationRecord): Promise<void> 
   const { error } = await supabase.functions.invoke('send-consultation-email', {
     body: {
       consultation: record,
-      recipients: ['info@wedesen.com', 'contact@wedesen.com'], // 实际的接收邮箱
+      recipients: ['wedeseneu@gmail.com'], // 实际的接收邮箱
     }
   });
 

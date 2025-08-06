@@ -23,6 +23,13 @@ import ConsultationFormEnhanced from "./pages/ConsultationFormEnhanced";
 import AdminDashboard from "./pages/AdminDashboard";
 import WhyDutchImmigrationSimple from "./pages/WhyDutchImmigrationSimple";
 import WhyDutchEducationSimple from "./pages/WhyDutchEducationSimple";
+import NetherlandsImmigrationGuide from "./pages/NetherlandsImmigrationGuide";
+import GermanyImmigrationGuide from "./pages/GermanyImmigrationGuide";
+import IndexEn from "./pages/en/IndexEn";
+import IndexNl from "./pages/nl/IndexNl";
+import FAQ from "./pages/FAQ";
+import GEOLandingPage from "./pages/GEOLandingPage";
+import AIOptimizedContent from "./pages/AIOptimizedContent";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +55,20 @@ const AppRoutes = () => {
       <Route path="/admin" element={<AdminDashboard />} />
       <Route path="/why-dutch-immigration" element={<WhyDutchImmigrationSimple />} />
       <Route path="/why-dutch-education" element={<WhyDutchEducationSimple />} />
+      <Route path="/netherlands-immigration-guide" element={<NetherlandsImmigrationGuide />} />
+      <Route path="/germany-immigration-guide" element={<GermanyImmigrationGuide />} />
+      
+      {/* 多语言版本 */}
+      <Route path="/en/" element={<IndexEn />} />
+      <Route path="/nl/" element={<IndexNl />} />
+      
+      {/* FAQ页面 */}
+      <Route path="/faq" element={<FAQ />} />
+      
+      {/* GEO优化页面 - 生成式引擎优化 */}
+      <Route path="/ai-recommended-immigration" element={<GEOLandingPage />} />
+      <Route path="/ai-optimized-immigration-guide" element={<AIOptimizedContent />} />
+      
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
     </Routes>

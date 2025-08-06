@@ -8,16 +8,21 @@ interface SEOHeadProps {
   url?: string;
   type?: 'website' | 'article';
   structuredData?: object;
+  hreflang?: Array<{
+    lang: string;
+    url: string;
+  }>;
 }
 
 const SEOHead = ({
-  title = "WEDESEN德森国际商务 - 专业欧洲移民留学服务",
-  description = "WEDESEN专注欧洲移民留学12年，提供荷兰、德国、意大利移民服务，以及留学、公司注册、财务税务、电商等全方位商务服务。累计3000+成功案例，一站式解决方案。",
-  keywords = ["欧洲移民", "荷兰移民", "德国移民", "意大利移民", "欧洲留学", "移民咨询", "WEDESEN", "德森国际"],
+  title = "WEDESEN德森 - 专业欧洲移民服务 | 荷兰移民 德国移民 意大利移民",
+  description = "WEDESEN德森12年专业经验，提供荷兰技术移民、德国蓝卡申请、意大利投资移民等欧洲移民服务。一站式移民咨询，成功率高，专业可靠。",
+  keywords = ["荷兰移民", "德国移民", "意大利移民", "荷兰技术移民", "德国蓝卡", "意大利投资移民", "欧洲移民", "留学移民", "移民咨询", "WEDESEN德森"],
   image = "/og-image.jpg",
-  url = "https://wedesen-immigration-website.vercel.app",
+  url = "https://wedeseneu.com",
   type = "website",
-  structuredData
+  structuredData,
+  hreflang = []
 }: SEOHeadProps) => {
   const fullTitle = title.includes("WEDESEN") ? title : `${title} - WEDESEN德森国际商务`;
   
@@ -63,6 +68,16 @@ const SEOHead = ({
       
       {/* Canonical URL */}
       <link rel="canonical" href={url} />
+      
+      {/* Hreflang标签 */}
+      {hreflang.map(({ lang, url: hreflangUrl }) => (
+        <link
+          key={lang}
+          rel="alternate"
+          hreflang={lang}
+          href={hreflangUrl}
+        />
+      ))}
     </Helmet>
   );
 };
@@ -71,15 +86,17 @@ const SEOHead = ({
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "WEDESEN德森国际商务",
-  "description": "专业欧洲移民留学服务机构，提供荷兰、德国、意大利移民及相关商务服务",
-  "url": "https://wedesen-immigration-website.vercel.app",
-  "logo": "https://wedesen-immigration-website.vercel.app/logo.png",
+  "name": "WEDESEN德森",
+  "alternateName": "德森国际商务",
+  "description": "专业欧洲移民服务机构，12年经验，提供荷兰移民、德国移民、意大利移民等专业服务",
+  "url": "https://wedeseneu.com",
+  "logo": "https://wedeseneu.com/logo.png",
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+86-13720010295",
-    "contactType": "customer service",
-    "availableLanguage": ["Chinese", "English"]
+    "contactType": "Customer Service",
+    "email": "wedeseneu@gmail.com",
+    "availableLanguage": ["Chinese", "English", "Dutch", "German", "Italian"]
   },
   "address": {
     "@type": "PostalAddress",
@@ -87,7 +104,7 @@ export const organizationSchema = {
   },
   "foundingDate": "2012",
   "employees": "10-50",
-  "serviceArea": ["Netherlands", "Germany", "Italy"],
+  "serviceArea": ["Netherlands", "Germany", "Italy", "China"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "欧洲移民留学服务",
@@ -118,6 +135,45 @@ export const organizationSchema = {
       }
     ]
   }
+};
+
+export const dutchImmigrationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "荷兰移民优势详解 - 世界顶级福利制度",
+  "description": "荷兰移民12大优势：世界第3幸福指数、免费医疗教育、HSM技术移民、欧盟护照等",
+  "author": {
+    "@type": "Organization",
+    "name": "WEDESEN德森"
+  },
+  "publisher": {
+    "@type": "Organization", 
+    "name": "WEDESEN德森",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wedeseneu.com/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wedeseneu.com/why-dutch-immigration"
+  },
+  "datePublished": "2024-01-01",
+  "dateModified": "2025-08-06",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "荷兰移民"
+    },
+    {
+      "@type": "Thing", 
+      "name": "荷兰技术移民"
+    },
+    {
+      "@type": "Thing",
+      "name": "欧洲移民"
+    }
+  ]
 };
 
 export const consultationServiceSchema = {
