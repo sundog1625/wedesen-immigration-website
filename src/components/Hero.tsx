@@ -62,14 +62,12 @@ const Hero = () => {
               variant="outline" 
               size="lg" 
               className="bg-white/10 text-white border-white/30 hover:bg-white/20"
-              onClick={() => {
-                const servicesSection = document.getElementById('services');
-                if (servicesSection) {
-                  servicesSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
+              asChild
             >
-              了解更多
+              <Link to="/why-dutch-immigration">
+                荷兰移民优势
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </Button>
           </div>
         </div>
