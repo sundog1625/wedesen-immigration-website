@@ -2,17 +2,20 @@ import { useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEOHead, { consultationServiceSchema } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowLeft, Send, MessageCircle, Phone, CheckCircle } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import FormField from "@/components/ui/form-field";
+import FormProgress from "@/components/ui/form-progress";
+import LoadingSpinner from "@/components/ui/loading-spinner";
 import { sendConsultationData, getConsultantByService, type ConsultationData } from "@/lib/consultation";
+import { validateForm, validateFieldRealtime, validationRules, getFieldHelpText } from "@/lib/form-validation";
+import { useAnalytics } from "@/lib/analytics";
 
-// 根据服务类型获取返回链接
+// 智能导航函数
 const getBackLink = (serviceType: string): string => {
   const serviceRoutes: { [key: string]: string } = {
     '荷兰移民服务': '/services/immigration',
@@ -24,13 +27,11 @@ const getBackLink = (serviceType: string): string => {
     '电商服务': '/services/ecommerce',
     '网站开发服务': '/services/development',
     '商务代理服务': '/services/business',
-    '移民资格评估': '/', // 来自首页的免费评估
+    '移民资格评估': '/',
   };
-  
   return serviceRoutes[serviceType] || '/';
 };
 
-// 根据服务类型获取返回文本
 const getBackText = (serviceType: string): string => {
   const serviceRoutes: { [key: string]: string } = {
     '荷兰移民服务': '返回移民服务',
@@ -44,14 +45,14 @@ const getBackText = (serviceType: string): string => {
     '商务代理服务': '返回商务代理',
     '移民资格评估': '返回首页',
   };
-  
   return serviceRoutes[serviceType] || '返回首页';
 };
 
-const ConsultationForm = () => {
+const ConsultationFormEnhanced = () => {
   const [searchParams] = useSearchParams();
   const serviceType = searchParams.get('service') || '通用咨询';
   const { toast } = useToast();
+  const { trackEvent } = useAnalytics();
   
   const [formData, setFormData] = useState({
     name: '',
@@ -67,9 +68,13 @@ const ConsultationForm = () => {
     contactMethod: ''
   });
   
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [currentStep, setCurrentStep] = useState(0);
 
+  const formSteps = ['基本信息', '咨询详情', '联系偏好', '提交申请'];
+  
   const serviceOptions = [
     '移民资格评估',
     '荷兰移民服务',
@@ -84,28 +89,86 @@ const ConsultationForm = () => {
     '其他咨询'
   ];
 
+  // 实时验证和数据更新
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
+
+    // 实时验证
+    if (validationRules[field]) {
+      const error = validateFieldRealtime(value, validationRules[field]);
+      setErrors(prev => ({
+        ...prev,
+        [field]: error || ''
+      }));
+    }
+
+    // 更新当前步骤
+    updateCurrentStep(field);
+  };
+
+  // 根据填写字段更新当前步骤
+  const updateCurrentStep = (field: string) => {
+    const fieldToStepMap: { [key: string]: number } = {
+      name: 0, phone: 0, email: 0, wechat: 0,
+      service: 1, urgency: 1, budget: 1, background: 1, questions: 1,
+      contactTime: 2, contactMethod: 2
+    };
+    
+    const step = fieldToStepMap[field];
+    if (step !== undefined && step > currentStep) {
+      setCurrentStep(step);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    trackEvent('form_submit', 'consultation_form_attempt', { 
+      service: serviceType,
+      form_completed: Object.values(formData).filter(v => v.trim()).length 
+    });
+    
+    // 完整表单验证
+    const formErrors = validateForm(formData, validationRules);
+    
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      setCurrentStep(3);
+      trackEvent('form_submit', 'consultation_form_validation_failed', { 
+        service: serviceType,
+        errors: Object.keys(formErrors).length 
+      });
+      toast({
+        title: "请检查表单信息",
+        description: "请修正标红的字段后重新提交",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
+    setCurrentStep(3);
 
     try {
-      // 使用专业的咨询数据发送服务
       await sendConsultationData(formData as ConsultationData);
-      
       setIsSubmitted(true);
+      trackEvent('form_submit', 'consultation_form_success', { 
+        service: serviceType,
+        form_data_length: JSON.stringify(formData).length 
+      });
       toast({
         title: "咨询提交成功！",
         description: "我们将在24小时内与您联系，请保持电话畅通。",
       });
     } catch (error) {
       console.error('提交失败:', error);
+      trackEvent('form_submit', 'consultation_form_error', { 
+        service: serviceType,
+        error: error instanceof Error ? error.message : 'unknown' 
+      });
       toast({
         title: "提交失败",
         description: "请稍后重试或直接联系我们的顾问。",
@@ -116,11 +179,16 @@ const ConsultationForm = () => {
     }
   };
 
+  // 成功页面
   if (isSubmitted) {
     const consultant = getConsultantByService(formData.service);
     
     return (
       <div className="min-h-screen bg-background">
+        <SEOHead 
+          title="咨询提交成功 - WEDESEN德森国际商务"
+          description="感谢您的咨询，我们将在24小时内与您联系"
+        />
         <Header />
         
         <section className="pt-20 pb-16">
@@ -180,6 +248,11 @@ const ConsultationForm = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead 
+        title={`${serviceType}咨询申请 - WEDESEN德森国际商务`}
+        description="填写详细咨询信息，我们的专业顾问将为您量身定制解决方案"
+        structuredData={consultationServiceSchema}
+      />
       <Header />
       
       <section className="pt-20 pb-16">
@@ -202,6 +275,13 @@ const ConsultationForm = () => {
               </p>
             </div>
 
+            {/* 进度指示器 */}
+            <FormProgress 
+              steps={formSteps} 
+              currentStep={currentStep} 
+              completedSteps={[]} 
+            />
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* 表单区域 */}
               <div className="lg:col-span-2">
@@ -215,170 +295,115 @@ const ConsultationForm = () => {
                   <CardContent>
                     <form onSubmit={handleSubmit} className="space-y-6">
                       {/* 基本信息 */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <Label htmlFor="name">姓名 *</Label>
-                          <Input
-                            id="name"
+                      <div className="space-y-4">
+                        <h3 className="text-lg font-medium text-primary">基本信息</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <FormField
+                            label="姓名"
+                            name="name"
                             value={formData.name}
-                            onChange={(e) => handleInputChange('name', e.target.value)}
+                            onChange={(value) => handleInputChange('name', value)}
                             placeholder="请输入您的姓名"
                             required
+                            error={errors.name}
+                            success={!errors.name && formData.name.length > 0}
+                            helpText={getFieldHelpText('name')}
                           />
-                        </div>
-                        <div>
-                          <Label htmlFor="phone">手机号 *</Label>
-                          <Input
-                            id="phone"
+                          <FormField
+                            label="手机号"
+                            name="phone"
                             type="tel"
                             value={formData.phone}
-                            onChange={(e) => handleInputChange('phone', e.target.value)}
+                            onChange={(value) => handleInputChange('phone', value)}
                             placeholder="请输入手机号"
                             required
+                            error={errors.phone}
+                            success={!errors.phone && formData.phone.length > 0}
+                            helpText={getFieldHelpText('phone')}
                           />
                         </div>
-                      </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <Label htmlFor="email">邮箱</Label>
-                          <Input
-                            id="email"
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <FormField
+                            label="邮箱"
+                            name="email"
                             type="email"
                             value={formData.email}
-                            onChange={(e) => handleInputChange('email', e.target.value)}
+                            onChange={(value) => handleInputChange('email', value)}
                             placeholder="请输入邮箱地址"
+                            required
+                            error={errors.email}
+                            success={!errors.email && formData.email.length > 0}
+                            helpText={getFieldHelpText('email')}
                           />
-                        </div>
-                        <div>
-                          <Label htmlFor="wechat">微信号</Label>
-                          <Input
-                            id="wechat"
+                          <FormField
+                            label="微信号"
+                            name="wechat"
                             value={formData.wechat}
-                            onChange={(e) => handleInputChange('wechat', e.target.value)}
+                            onChange={(value) => handleInputChange('wechat', value)}
                             placeholder="请输入微信号"
+                            error={errors.wechat}
+                            success={!errors.wechat && formData.wechat.length > 0}
+                            helpText={getFieldHelpText('wechat')}
                           />
                         </div>
                       </div>
 
-                      {/* 咨询服务 */}
-                      <div>
-                        <Label htmlFor="service">咨询服务 *</Label>
-                        <Select
-                          value={formData.service}
-                          onValueChange={(value) => handleInputChange('service', value)}
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="请选择咨询服务类型" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {serviceOptions.map((option) => (
-                              <SelectItem key={option} value={option}>
-                                {option}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      {/* 紧急程度和预算 */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* 服务选择 */}
+                      <div className="space-y-4">
+                        <h3 className="text-lg font-medium text-primary">咨询服务</h3>
                         <div>
-                          <Label htmlFor="urgency">紧急程度</Label>
+                          <label className="block text-sm font-medium text-foreground mb-2">
+                            咨询服务 <span className="text-red-500">*</span>
+                          </label>
                           <Select
-                            value={formData.urgency}
-                            onValueChange={(value) => handleInputChange('urgency', value)}
+                            value={formData.service}
+                            onValueChange={(value) => handleInputChange('service', value)}
                           >
                             <SelectTrigger>
-                              <SelectValue placeholder="请选择紧急程度" />
+                              <SelectValue placeholder="请选择咨询服务类型" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="urgent">非常紧急（1周内）</SelectItem>
-                              <SelectItem value="normal">一般紧急（1个月内）</SelectItem>
-                              <SelectItem value="flexible">时间灵活（3个月内）</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div>
-                          <Label htmlFor="budget">预算范围</Label>
-                          <Select
-                            value={formData.budget}
-                            onValueChange={(value) => handleInputChange('budget', value)}
-                          >
-                            <SelectTrigger>
-                              <SelectValue placeholder="请选择预算范围" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="low">5万元以下</SelectItem>
-                              <SelectItem value="medium">5-20万元</SelectItem>
-                              <SelectItem value="high">20-50万元</SelectItem>
-                              <SelectItem value="premium">50万元以上</SelectItem>
-                              <SelectItem value="discuss">面议</SelectItem>
+                              {serviceOptions.map((option) => (
+                                <SelectItem key={option} value={option}>
+                                  {option}
+                                </SelectItem>
+                              ))}
                             </SelectContent>
                           </Select>
                         </div>
                       </div>
 
-                      {/* 个人背景 */}
-                      <div>
-                        <Label htmlFor="background">个人背景</Label>
-                        <Textarea
-                          id="background"
-                          value={formData.background}
-                          onChange={(e) => handleInputChange('background', e.target.value)}
-                          placeholder="请简述您的教育背景、工作经历、家庭情况等（选填）"
-                          rows={3}
-                        />
-                      </div>
-
-                      {/* 具体问题 */}
-                      <div>
-                        <Label htmlFor="questions">具体咨询问题 *</Label>
-                        <Textarea
-                          id="questions"
+                      {/* 详细需求 */}
+                      <div className="space-y-4">
+                        <h3 className="text-lg font-medium text-primary">详细需求</h3>
+                        <FormField
+                          label="具体咨询问题"
+                          name="questions"
+                          type="textarea"
                           value={formData.questions}
-                          onChange={(e) => handleInputChange('questions', e.target.value)}
-                          placeholder="请详细描述您的咨询问题、需求或疑虑"
-                          rows={4}
+                          onChange={(value) => handleInputChange('questions', value)}
+                          placeholder="请详细描述您的需求、问题或疑虑"
                           required
+                          error={errors.questions}
+                          success={!errors.questions && formData.questions.length >= 10}
+                          helpText={getFieldHelpText('questions')}
+                          rows={4}
+                          maxLength={500}
                         />
-                      </div>
-
-                      {/* 联系偏好 */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <Label htmlFor="contactTime">方便联系时间</Label>
-                          <Select
-                            value={formData.contactTime}
-                            onValueChange={(value) => handleInputChange('contactTime', value)}
-                          >
-                            <SelectTrigger>
-                              <SelectValue placeholder="请选择方便联系的时间" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="morning">上午 (9:00-12:00)</SelectItem>
-                              <SelectItem value="afternoon">下午 (14:00-18:00)</SelectItem>
-                              <SelectItem value="evening">晚上 (18:00-21:00)</SelectItem>
-                              <SelectItem value="anytime">任何时间</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div>
-                          <Label htmlFor="contactMethod">首选联系方式</Label>
-                          <Select
-                            value={formData.contactMethod}
-                            onValueChange={(value) => handleInputChange('contactMethod', value)}
-                          >
-                            <SelectTrigger>
-                              <SelectValue placeholder="请选择首选联系方式" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="phone">电话</SelectItem>
-                              <SelectItem value="wechat">微信</SelectItem>
-                              <SelectItem value="email">邮箱</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
+                        
+                        <FormField
+                          label="个人背景"
+                          name="background"
+                          type="textarea"
+                          value={formData.background}
+                          onChange={(value) => handleInputChange('background', value)}
+                          placeholder="请简述您的教育背景、工作经历、家庭情况等（选填）"
+                          error={errors.background}
+                          helpText={getFieldHelpText('background')}
+                          rows={3}
+                          maxLength={300}
+                        />
                       </div>
 
                       <Button 
@@ -388,10 +413,7 @@ const ConsultationForm = () => {
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? (
-                          <>
-                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
-                            提交中...
-                          </>
+                          <LoadingSpinner size="sm" text="提交中..." />
                         ) : (
                           <>
                             <Send className="w-4 h-4 mr-2" />
@@ -467,4 +489,4 @@ const ConsultationForm = () => {
   );
 };
 
-export default ConsultationForm;
+export default ConsultationFormEnhanced;
