@@ -31,7 +31,25 @@ interface AnalyticsStats {
 }
 
 const AdminDashboard = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // 从localStorage检查认证状态
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    try {
+      const authData = localStorage.getItem('admin_auth_data');
+      if (authData) {
+        const { authenticated, timestamp } = JSON.parse(authData);
+        // 检查是否在12小时内
+        const isValid = authenticated && (Date.now() - timestamp) < 12 * 60 * 60 * 1000;
+        if (!isValid) {
+          localStorage.removeItem('admin_auth_data');
+          return false;
+        }
+        return true;
+      }
+      return false;
+    } catch {
+      return false;
+    }
+  });
   const [password, setPassword] = useState("");
   const [stats, setStats] = useState<AnalyticsStats | null>(null);
   const [selectedDateRange, setSelectedDateRange] = useState('7d');
@@ -49,10 +67,20 @@ const AdminDashboard = () => {
     e.preventDefault();
     if (password === ADMIN_PASSWORD) {
       setIsAuthenticated(true);
+      // 保存认证状态和时间戳
+      localStorage.setItem('admin_auth_data', JSON.stringify({
+        authenticated: true,
+        timestamp: Date.now()
+      }));
       setPassword("");
     } else {
       alert("密码错误");
     }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem('admin_auth_data');
   };
 
   const loadAnalyticsData = () => {
@@ -257,6 +285,10 @@ const AdminDashboard = () => {
             <Button onClick={loadAnalyticsData} variant="outline">
               <RefreshCw className="w-4 h-4 mr-2" />
               刷新
+            </Button>
+            <Button onClick={handleLogout} variant="outline">
+              <Lock className="w-4 h-4 mr-2" />
+              退出登录
             </Button>
           </div>
         </div>
