@@ -16,7 +16,8 @@ const WhyDutchEducationSimple = () => {
       strengths: ["社会科学", "传媒学", "心理学", "经济学"],
       logo: "🏛️",
       description: "荷兰最大的综合性研究型大学",
-      tuition: "€2,314",
+      tuition: "€2,530",
+      tuitionNonEU: "€12,010-23,400",
       programs: "200+"
     },
     {
@@ -26,7 +27,8 @@ const WhyDutchEducationSimple = () => {
       strengths: ["工程技术", "建筑学", "计算机科学", "航空航天"],
       logo: "🔧",
       description: "欧洲顶级理工院校，工科全球排名第3",
-      tuition: "€2,314", 
+      tuition: "€2,530", 
+      tuitionNonEU: "€16,705-22,290",
       programs: "150+"
     },
     {
@@ -36,7 +38,8 @@ const WhyDutchEducationSimple = () => {
       strengths: ["农业科学", "环境学", "食品科学", "生命科学"],
       logo: "🌱",
       description: "农业与生命科学全球排名第1",
-      tuition: "€2,314",
+      tuition: "€2,530",
+      tuitionNonEU: "€17,300-20,600",
       programs: "30+"
     },
     {
@@ -46,7 +49,8 @@ const WhyDutchEducationSimple = () => {
       strengths: ["法学", "医学", "人文学", "国际关系"],
       logo: "⚖️",
       description: "荷兰最古老大学，法学院享誉全球",
-      tuition: "€2,314",
+      tuition: "€2,530",
+      tuitionNonEU: "€12,000-18,000",
       programs: "100+"
     },
     {
@@ -56,7 +60,8 @@ const WhyDutchEducationSimple = () => {
       strengths: ["兽医学", "地理学", "教育学", "生物医学"],
       logo: "🔬",
       description: "荷兰最大的研究型大学之一",
-      tuition: "€2,314",
+      tuition: "€2,530",
+      tuitionNonEU: "€13,000-19,000",
       programs: "90+"
     },
     {
@@ -66,7 +71,8 @@ const WhyDutchEducationSimple = () => {
       strengths: ["商学", "经济学", "管理学", "医学"],
       logo: "💼",
       description: "欧洲顶级商学院，MBA排名全球前20",
-      tuition: "€2,314",
+      tuition: "€2,530",
+      tuitionNonEU: "€14,000-20,000",
       programs: "80+"
     }
   ];
@@ -112,9 +118,9 @@ const WhyDutchEducationSimple = () => {
   const costs = [
     {
       category: "学费",
-      eu: "€2,314/年",
-      nonEu: "€8,000-20,000/年", 
-      description: "欧盟学生享受本地学费"
+      eu: "€2,530/年",
+      nonEu: "€12,000-23,400/年", 
+      description: "2024-2025学年官方标准"
     },
     {
       category: "生活费",
@@ -129,10 +135,10 @@ const WhyDutchEducationSimple = () => {
       description: "学生宿舍或私人住房"
     },
     {
-      category: "书籍费",
-      eu: "€500-1,000/年",
-      nonEu: "€500-1,000/年",
-      description: "教材和学习用品"
+      category: "其他费用",
+      eu: "€200-400/月",
+      nonEu: "€200-400/月",
+      description: "书籍、保险、个人支出"
     }
   ];
 
@@ -412,10 +418,14 @@ const WhyDutchEducationSimple = () => {
                     {university.description}
                   </p>
                   <div className="space-y-3">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="text-center p-2 bg-muted/50 rounded">
-                        <div className="text-lg font-semibold text-primary">{university.tuition}</div>
-                        <div className="text-xs text-muted-foreground">年学费</div>
+                    <div className="space-y-3">
+                      <div className="p-3 bg-green-50 rounded-lg">
+                        <div className="text-xs text-muted-foreground text-center mb-1">欧盟学生学费</div>
+                        <div className="text-lg font-semibold text-green-600 text-center">{university.tuition}/年</div>
+                      </div>
+                      <div className="p-3 bg-blue-50 rounded-lg">
+                        <div className="text-xs text-muted-foreground text-center mb-1">非欧盟学生学费</div>
+                        <div className="text-sm font-semibold text-blue-600 text-center">{university.tuitionNonEU}/年</div>
                       </div>
                       <div className="text-center p-2 bg-muted/50 rounded">
                         <div className="text-lg font-semibold text-primary">{university.programs}</div>
