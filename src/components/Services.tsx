@@ -206,22 +206,22 @@ const Services = () => {
                 </div>
               </CardHeader>
               <CardContent className="relative z-10">
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="text-center p-3 bg-white/70 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600">#4</div>
-                    <div className="text-xs text-muted-foreground">全球教育质量</div>
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">全球教育质量排名</span>
+                    <span className="font-bold text-green-600">#4</span>
                   </div>
-                  <div className="text-center p-3 bg-white/70 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600">14所</div>
-                    <div className="text-xs text-muted-foreground">世界前200大学</div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">世界前200大学</span>
+                    <span className="font-bold text-green-600">14所</span>
                   </div>
-                  <div className="text-center p-3 bg-white/70 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600">2000+</div>
-                    <div className="text-xs text-muted-foreground">英语授课项目</div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">英语授课项目</span>
+                    <span className="font-bold text-green-600">2,100+</span>
                   </div>
-                  <div className="text-center p-3 bg-white/70 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600">95%</div>
-                    <div className="text-xs text-muted-foreground">毕业生就业率</div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">毕业生就业率</span>
+                    <span className="font-bold text-green-600">95%</span>
                   </div>
                 </div>
                 <Button 
