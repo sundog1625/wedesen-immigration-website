@@ -24,6 +24,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import WhyDutchImmigration from "./pages/WhyDutchImmigration";
 import WhyDutchEducation from "./pages/WhyDutchEducation";
 import TestDeployment from "./pages/TestDeployment";
+import Simple from "./pages/Simple";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const AppRoutes = () => {
       <Route path="/why-dutch-immigration" element={<WhyDutchImmigration />} />
       <Route path="/why-dutch-education" element={<WhyDutchEducation />} />
       <Route path="/test-deployment" element={<TestDeployment />} />
+      <Route path="/simple" element={<Simple />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
     </Routes>
