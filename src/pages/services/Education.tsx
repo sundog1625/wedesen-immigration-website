@@ -1,5 +1,8 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
-import { GraduationCap } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { GraduationCap, Award, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Education = () => {
   const services = [
@@ -113,17 +116,80 @@ const Education = () => {
   ];
 
   return (
-    <ServicePageLayout
-      title="留学服务"
-      subtitle="欧洲名校申请 · 全程专业指导"
-      description="专注欧洲留学12年，为学生提供从院校选择、申请材料准备、签证办理到留学后服务的全程专业指导。我们与荷兰、德国、意大利等国的知名大学建立了良好的合作关系，帮助每一位学生实现欧洲留学梦想。"
-      icon={<GraduationCap className="w-10 h-10 text-green-600" />}
-      iconBg="bg-green-50"
-      services={services}
-      advantages={advantages}
-      successCases={successCases}
-      countries={["荷兰", "德国", "意大利", "法国", "西班牙"]}
-    />
+    <div>
+      <ServicePageLayout
+        title="留学服务"
+        subtitle="欧洲名校申请 · 全程专业指导"
+        description="专注欧洲留学12年，为学生提供从院校选择、申请材料准备、签证办理到留学后服务的全程专业指导。我们与荷兰、德国、意大利等国的知名大学建立了良好的合作关系，帮助每一位学生实现欧洲留学梦想。"
+        icon={<GraduationCap className="w-10 h-10 text-green-600" />}
+        iconBg="bg-green-50"
+        services={services}
+        advantages={advantages}
+        successCases={successCases}
+        countries={["荷兰", "德国", "意大利", "法国", "西班牙"]}
+      />
+      
+      {/* 推荐阅读部分 */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-light mb-4">
+              <span className="text-primary">深度了解荷兰留学</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              发现荷兰教育的卓越品质和学历含金量
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-2 border-primary/20">
+              <CardHeader className="pb-4">
+                <div className="flex items-center space-x-4">
+                  <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                    <Award className="w-8 h-8 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <CardTitle className="text-xl mb-2">为什么选择荷兰留学？</CardTitle>
+                    <CardDescription className="text-base">
+                      探索荷兰世界顶级的教育质量、全英文授课环境、高含金量学历认证和广阔就业前景。
+                      了解荷兰名校如何为您开启全球职业发展之路。
+                    </CardDescription>
+                  </div>
+                  <Button asChild className="group-hover:scale-105 transition-transform">
+                    <Link to="/why-dutch-education">
+                      了解详情
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-primary/5 rounded-lg p-4">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div>
+                      <div className="text-2xl font-bold text-primary">#4</div>
+                      <div className="text-xs text-muted-foreground">全球教育质量</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">14所</div>
+                      <div className="text-xs text-muted-foreground">世界前200大学</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">2000+</div>
+                      <div className="text-xs text-muted-foreground">英语授课项目</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">95%</div>
+                      <div className="text-xs text-muted-foreground">毕业生就业率</div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

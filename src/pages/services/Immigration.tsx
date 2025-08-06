@@ -1,5 +1,8 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
-import { Plane } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Plane, Heart, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Immigration = () => {
   const services = [
@@ -134,17 +137,80 @@ const Immigration = () => {
   ];
 
   return (
-    <ServicePageLayout
-      title="移民服务"
-      subtitle="荷兰 · 德国 · 意大利 专业移民方案"
-      description="深耕欧洲移民市场12年，为您提供荷兰、德国、意大利等国家的专业移民服务。从高技能移民到投资移民，从申请准备到成功获批，我们的专业团队为您量身定制最适合的移民方案，让您顺利开启欧洲新生活。"
-      icon={<Plane className="w-10 h-10 text-blue-600" />}
-      iconBg="bg-blue-50"
-      services={services}
-      advantages={advantages}
-      successCases={successCases}
-      countries={["荷兰", "德国", "意大利"]}
-    />
+    <div>
+      <ServicePageLayout
+        title="移民服务"
+        subtitle="荷兰 · 德国 · 意大利 专业移民方案"
+        description="深耕欧洲移民市场12年，为您提供荷兰、德国、意大利等国家的专业移民服务。从高技能移民到投资移民，从申请准备到成功获批，我们的专业团队为您量身定制最适合的移民方案，让您顺利开启欧洲新生活。"
+        icon={<Plane className="w-10 h-10 text-blue-600" />}
+        iconBg="bg-blue-50"
+        services={services}
+        advantages={advantages}
+        successCases={successCases}
+        countries={["荷兰", "德国", "意大利"]}
+      />
+      
+      {/* 推荐阅读部分 */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-light mb-4">
+              <span className="text-primary">深度了解荷兰移民</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              深入了解荷兰移民的优势和福利政策
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-2 border-primary/20">
+              <CardHeader className="pb-4">
+                <div className="flex items-center space-x-4">
+                  <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                    <Heart className="w-8 h-8 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <CardTitle className="text-xl mb-2">为什么选择移民荷兰？</CardTitle>
+                    <CardDescription className="text-base">
+                      详细了解荷兰世界顶级的社会福利制度、医疗保健系统、教育资源和工作环境。
+                      从儿童津贴到养老保险，从免费教育到完善医疗，荷兰为您和家人提供全方位保障。
+                    </CardDescription>
+                  </div>
+                  <Button asChild className="group-hover:scale-105 transition-transform">
+                    <Link to="/why-dutch-immigration">
+                      了解详情
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-primary/5 rounded-lg p-4">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div>
+                      <div className="text-2xl font-bold text-primary">#3</div>
+                      <div className="text-xs text-muted-foreground">全球幸福指数</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">€293</div>
+                      <div className="text-xs text-muted-foreground">月儿童津贴</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">100%</div>
+                      <div className="text-xs text-muted-foreground">医保覆盖</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">免费</div>
+                      <div className="text-xs text-muted-foreground">义务教育</div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 
