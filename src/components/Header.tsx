@@ -50,39 +50,88 @@ const Header = () => {
               首页
             </button>
             
-            {/* 服务下拉菜单 */}
+            {/* 移民服务下拉菜单 */}
             <div className="relative group">
               <button className="text-foreground hover:text-primary transition-colors flex items-center space-x-1">
-                <span>我们的服务</span>
+                <span>移民服务</span>
+                <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-md shadow-lg border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="p-2">
+                  <Link 
+                    to="/why-dutch-immigration" 
+                    className="block px-3 py-3 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors rounded border-b border-border/30"
+                    onClick={() => {
+                      trackEvent('click', 'nav_dutch_immigration');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <div className="font-medium">🇳🇱 移民荷兰</div>
+                    <div className="text-xs text-muted-foreground">世界顶级福利制度详解</div>
+                  </Link>
+                  <Link 
+                    to="/services/immigration" 
+                    className="block px-3 py-3 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors rounded"
+                    onClick={() => {
+                      trackEvent('click', 'nav_immigration_service');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <div className="font-medium">移民咨询服务</div>
+                    <div className="text-xs text-muted-foreground">荷兰、意大利、德国移民办理</div>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* 留学服务下拉菜单 */}
+            <div className="relative group">
+              <button className="text-foreground hover:text-primary transition-colors flex items-center space-x-1">
+                <span>留学服务</span>
+                <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-md shadow-lg border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="p-2">
+                  <Link 
+                    to="/why-dutch-education" 
+                    className="block px-3 py-3 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors rounded border-b border-border/30"
+                    onClick={() => {
+                      trackEvent('click', 'nav_dutch_education');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <div className="font-medium">🎓 留学荷兰</div>
+                    <div className="text-xs text-muted-foreground">高含金量学历认证详解</div>
+                  </Link>
+                  <Link 
+                    to="/services/education" 
+                    className="block px-3 py-3 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors rounded"
+                    onClick={() => {
+                      trackEvent('click', 'nav_education_service');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <div className="font-medium">留学咨询服务</div>
+                    <div className="text-xs text-muted-foreground">欧洲名校申请与留学规划</div>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* 商务服务下拉菜单 */}
+            <div className="relative group">
+              <button className="text-foreground hover:text-primary transition-colors flex items-center space-x-1">
+                <span>商务服务</span>
                 <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
               <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-md shadow-lg border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div className="p-2">
-                  <div className="font-semibold text-sm text-muted-foreground px-3 py-2">移民服务</div>
-                  <Link 
-                    to="/services/immigration" 
-                    className="block px-3 py-2 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors rounded"
-                    onClick={() => {
-                      trackEvent('click', 'nav_immigration_service');
-                      setIsMobileMenuOpen(false);
-                    }}
-                  >
-                    荷兰、意大利、德国移民咨询与办理
-                  </Link>
-                  <div className="font-semibold text-sm text-muted-foreground px-3 py-2 mt-2">留学服务</div>
-                  <Link 
-                    to="/services/education" 
-                    className="block px-3 py-2 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors rounded"
-                    onClick={() => {
-                      trackEvent('click', 'nav_education_service');
-                      setIsMobileMenuOpen(false);
-                    }}
-                  >
-                    欧洲名校申请与留学规划
-                  </Link>
-                  <div className="font-semibold text-sm text-muted-foreground px-3 py-2 mt-2">商务服务</div>
                   <Link 
                     to="/services/consulting" 
                     className="block px-3 py-2 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors rounded"
@@ -91,7 +140,7 @@ const Header = () => {
                       setIsMobileMenuOpen(false);
                     }}
                   >
-                    专业移民与商务咨询服务
+                    专业移民与商务咨询
                   </Link>
                   <Link 
                     to="/services/registration" 
@@ -111,7 +160,7 @@ const Header = () => {
                       setIsMobileMenuOpen(false);
                     }}
                   >
-                    专业财务管理与税务筹划
+                    财务管理与税务筹划
                   </Link>
                   <Link 
                     to="/services/ecommerce" 
@@ -131,7 +180,7 @@ const Header = () => {
                       setIsMobileMenuOpen(false);
                     }}
                   >
-                    专业网站设计与开发服务
+                    网站设计与开发服务
                   </Link>
                   <Link 
                     to="/services/business" 
@@ -141,43 +190,9 @@ const Header = () => {
                       setIsMobileMenuOpen(false);
                     }}
                   >
-                    全方位商务代理与支持服务
+                    商务代理与支持服务
                   </Link>
                 </div>
-              </div>
-            </div>
-
-            {/* 荷兰专题下拉菜单 */}
-            <div className="relative group">
-              <button className="text-foreground hover:text-primary transition-colors flex items-center space-x-1">
-                <span>荷兰专题</span>
-                <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <Link 
-                  to="/why-dutch-immigration" 
-                  className="block px-4 py-3 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors border-b border-border/50"
-                  onClick={() => {
-                    trackEvent('click', 'nav_dutch_immigration');
-                    setIsMobileMenuOpen(false);
-                  }}
-                >
-                  <div className="font-medium">移民荷兰</div>
-                  <div className="text-xs text-muted-foreground">世界顶级福利制度</div>
-                </Link>
-                <Link 
-                  to="/why-dutch-education" 
-                  className="block px-4 py-3 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors"
-                  onClick={() => {
-                    trackEvent('click', 'nav_dutch_education');
-                    setIsMobileMenuOpen(false);
-                  }}
-                >
-                  <div className="font-medium">留学荷兰</div>
-                  <div className="text-xs text-muted-foreground">高含金量学历认证</div>
-                </Link>
               </div>
             </div>
 
@@ -255,77 +270,9 @@ const Header = () => {
                 首页
               </button>
               
-              {/* Mobile Services Section */}
+              {/* 移民服务 */}
               <div className="py-2">
-                <div className="text-foreground font-medium mb-3">我们的服务</div>
-                <div className="pl-4 space-y-4">
-                  <div>
-                    <div className="text-xs font-semibold text-muted-foreground mb-2">移民服务</div>
-                    <Link 
-                      to="/services/immigration" 
-                      className="block text-sm text-muted-foreground hover:text-primary transition-colors mb-2"
-                      onClick={() => {
-                        trackEvent('click', 'mobile_nav_immigration_service');
-                        setIsMobileMenuOpen(false);
-                      }}
-                    >
-                      荷兰、意大利、德国移民咨询
-                    </Link>
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold text-muted-foreground mb-2">留学服务</div>
-                    <Link 
-                      to="/services/education" 
-                      className="block text-sm text-muted-foreground hover:text-primary transition-colors mb-2"
-                      onClick={() => {
-                        trackEvent('click', 'mobile_nav_education_service');
-                        setIsMobileMenuOpen(false);
-                      }}
-                    >
-                      欧洲名校申请与留学规划
-                    </Link>
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold text-muted-foreground mb-2">商务服务</div>
-                    <div className="space-y-2">
-                      <Link 
-                        to="/services/consulting" 
-                        className="block text-sm text-muted-foreground hover:text-primary transition-colors"
-                        onClick={() => {
-                          trackEvent('click', 'mobile_nav_consulting_service');
-                          setIsMobileMenuOpen(false);
-                        }}
-                      >
-                        专业移民与商务咨询
-                      </Link>
-                      <Link 
-                        to="/services/registration" 
-                        className="block text-sm text-muted-foreground hover:text-primary transition-colors"
-                        onClick={() => {
-                          trackEvent('click', 'mobile_nav_registration_service');
-                          setIsMobileMenuOpen(false);
-                        }}
-                      >
-                        欧洲公司设立与企业服务
-                      </Link>
-                      <Link 
-                        to="/services/finance" 
-                        className="block text-sm text-muted-foreground hover:text-primary transition-colors"
-                        onClick={() => {
-                          trackEvent('click', 'mobile_nav_finance_service');
-                          setIsMobileMenuOpen(false);
-                        }}
-                      >
-                        财务管理与税务筹划
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Mobile Dutch Topics Section */}
-              <div className="py-2">
-                <div className="text-foreground font-medium mb-3">荷兰专题</div>
+                <div className="text-foreground font-medium mb-3">移民服务</div>
                 <div className="pl-4 space-y-3">
                   <Link 
                     to="/why-dutch-immigration" 
@@ -335,9 +282,27 @@ const Header = () => {
                       setIsMobileMenuOpen(false);
                     }}
                   >
-                    <div className="font-medium">移民荷兰</div>
-                    <div className="text-xs text-muted-foreground/70">世界顶级福利制度</div>
+                    <div className="font-medium">🇳🇱 移民荷兰</div>
+                    <div className="text-xs text-muted-foreground/70">世界顶级福利制度详解</div>
                   </Link>
+                  <Link 
+                    to="/services/immigration" 
+                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+                    onClick={() => {
+                      trackEvent('click', 'mobile_nav_immigration_service');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <div className="font-medium">移民咨询服务</div>
+                    <div className="text-xs text-muted-foreground/70">荷兰、意大利、德国移民办理</div>
+                  </Link>
+                </div>
+              </div>
+              
+              {/* 留学服务 */}
+              <div className="py-2">
+                <div className="text-foreground font-medium mb-3">留学服务</div>
+                <div className="pl-4 space-y-3">
                   <Link 
                     to="/why-dutch-education" 
                     className="block text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -346,13 +311,91 @@ const Header = () => {
                       setIsMobileMenuOpen(false);
                     }}
                   >
-                    <div className="font-medium">留学荷兰</div>
-                    <div className="text-xs text-muted-foreground/70">高含金量学历认证</div>
+                    <div className="font-medium">🎓 留学荷兰</div>
+                    <div className="text-xs text-muted-foreground/70">高含金量学历认证详解</div>
+                  </Link>
+                  <Link 
+                    to="/services/education" 
+                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+                    onClick={() => {
+                      trackEvent('click', 'mobile_nav_education_service');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <div className="font-medium">留学咨询服务</div>
+                    <div className="text-xs text-muted-foreground/70">欧洲名校申请与留学规划</div>
+                  </Link>
+                </div>
+              </div>
+              
+              {/* 商务服务 */}
+              <div className="py-2">
+                <div className="text-foreground font-medium mb-3">商务服务</div>
+                <div className="pl-4 space-y-2">
+                  <Link 
+                    to="/services/consulting" 
+                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+                    onClick={() => {
+                      trackEvent('click', 'mobile_nav_consulting_service');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    专业移民与商务咨询
+                  </Link>
+                  <Link 
+                    to="/services/registration" 
+                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+                    onClick={() => {
+                      trackEvent('click', 'mobile_nav_registration_service');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    欧洲公司设立与企业服务
+                  </Link>
+                  <Link 
+                    to="/services/finance" 
+                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+                    onClick={() => {
+                      trackEvent('click', 'mobile_nav_finance_service');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    财务管理与税务筹划
+                  </Link>
+                  <Link 
+                    to="/services/ecommerce" 
+                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+                    onClick={() => {
+                      trackEvent('click', 'mobile_nav_ecommerce_service');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    跨境电商与本地化运营
+                  </Link>
+                  <Link 
+                    to="/services/development" 
+                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+                    onClick={() => {
+                      trackEvent('click', 'mobile_nav_development_service');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    网站设计与开发服务
+                  </Link>
+                  <Link 
+                    to="/services/business" 
+                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+                    onClick={() => {
+                      trackEvent('click', 'mobile_nav_business_service');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    商务代理与支持服务
                   </Link>
                 </div>
               </div>
 
-              {/* Mobile Online Consultation */}
+              {/* 在线咨询 */}
               <Link 
                 to="/consultation?service=通用咨询" 
                 className="text-left text-foreground hover:text-primary transition-colors py-2"

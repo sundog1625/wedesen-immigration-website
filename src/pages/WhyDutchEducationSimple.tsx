@@ -285,7 +285,7 @@ const WhyDutchEducationSimple = () => {
               <CardHeader className="pb-4">
                 <DollarSign className="w-8 h-8 text-purple-600 mb-2" />
                 <CardTitle className="text-lg">学费相对较低</CardTitle>
-                <CardDescription>欧盟学生仅€2,314/年</CardDescription>
+                <CardDescription>欧盟学生仅€2,530/年</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
