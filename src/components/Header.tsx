@@ -55,6 +55,38 @@ const Header = () => {
             >
               服务
             </button>
+            <div className="relative group">
+              <button className="text-foreground hover:text-primary transition-colors flex items-center space-x-1">
+                <span>荷兰专题</span>
+                <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <Link 
+                  to="/why-dutch-immigration" 
+                  className="block px-4 py-3 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors border-b border-border/50"
+                  onClick={() => {
+                    trackEvent('click', 'nav_dutch_immigration');
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  <div className="font-medium">移民荷兰</div>
+                  <div className="text-xs text-muted-foreground">世界顶级福利制度</div>
+                </Link>
+                <Link 
+                  to="/why-dutch-education" 
+                  className="block px-4 py-3 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors"
+                  onClick={() => {
+                    trackEvent('click', 'nav_dutch_education');
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  <div className="font-medium">留学荷兰</div>
+                  <div className="text-xs text-muted-foreground">高含金量学历认证</div>
+                </Link>
+              </div>
+            </div>
             <button 
               onClick={() => handleNavClick('about')}
               className="text-foreground hover:text-primary transition-colors"
@@ -122,6 +154,36 @@ const Header = () => {
               >
                 服务
               </button>
+              
+              {/* Mobile Dutch Topics Section */}
+              <div className="py-2">
+                <div className="text-foreground font-medium mb-3">荷兰专题</div>
+                <div className="pl-4 space-y-3">
+                  <Link 
+                    to="/why-dutch-immigration" 
+                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+                    onClick={() => {
+                      trackEvent('click', 'mobile_nav_dutch_immigration');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <div className="font-medium">移民荷兰</div>
+                    <div className="text-xs text-muted-foreground/70">世界顶级福利制度</div>
+                  </Link>
+                  <Link 
+                    to="/why-dutch-education" 
+                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+                    onClick={() => {
+                      trackEvent('click', 'mobile_nav_dutch_education');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <div className="font-medium">留学荷兰</div>
+                    <div className="text-xs text-muted-foreground/70">高含金量学历认证</div>
+                  </Link>
+                </div>
+              </div>
+              
               <button 
                 onClick={() => handleNavClick('about')}
                 className="text-left text-foreground hover:text-primary transition-colors py-2"
