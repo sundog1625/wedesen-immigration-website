@@ -23,6 +23,7 @@ import ConsultationFormEnhanced from "./pages/ConsultationFormEnhanced";
 import AdminDashboard from "./pages/AdminDashboard";
 import WhyDutchImmigration from "./pages/WhyDutchImmigration";
 import WhyDutchEducation from "./pages/WhyDutchEducation";
+import TestDeployment from "./pages/TestDeployment";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ const AppRoutes = () => {
       <Route path="/admin" element={<AdminDashboard />} />
       <Route path="/why-dutch-immigration" element={<WhyDutchImmigration />} />
       <Route path="/why-dutch-education" element={<WhyDutchEducation />} />
+      <Route path="/test-deployment" element={<TestDeployment />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
     </Routes>
