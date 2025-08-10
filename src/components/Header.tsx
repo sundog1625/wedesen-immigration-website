@@ -197,6 +197,18 @@ const Header = () => {
               </div>
             </div>
 
+            {/* 免费资源 */}
+            <Link 
+              to="/resources" 
+              className="text-foreground hover:text-primary transition-colors"
+              onClick={() => {
+                trackEvent('click', 'nav_resources');
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              免费资源
+            </Link>
+
             {/* 在线咨询 */}
             <Link 
               to="/consultation?service=通用咨询" 
@@ -396,6 +408,18 @@ const Header = () => {
                   </Link>
                 </div>
               </div>
+
+              {/* 免费资源 */}
+              <Link 
+                to="/resources" 
+                className="text-left text-foreground hover:text-primary transition-colors py-2"
+                onClick={() => {
+                  trackEvent('click', 'mobile_nav_resources');
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                免费资源
+              </Link>
 
               {/* 在线咨询 */}
               <Link 

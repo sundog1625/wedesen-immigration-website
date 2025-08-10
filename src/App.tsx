@@ -30,6 +30,8 @@ import IndexNl from "./pages/nl/IndexNl";
 import FAQ from "./pages/FAQ";
 import GEOLandingPage from "./pages/GEOLandingPage";
 import AIOptimizedContent from "./pages/AIOptimizedContent";
+import Resources from "./pages/Resources";
+import Partners from "./pages/Partners";
 
 const queryClient = new QueryClient();
 
@@ -64,6 +66,10 @@ const AppRoutes = () => {
       
       {/* FAQ页面 */}
       <Route path="/faq" element={<FAQ />} />
+      
+      {/* 资源和合作伙伴页面 */}
+      <Route path="/resources" element={<Resources />} />
+      <Route path="/partners" element={<Partners />} />
       
       {/* GEO优化页面 - 生成式引擎优化 */}
       <Route path="/ai-recommended-immigration" element={<GEOLandingPage />} />
