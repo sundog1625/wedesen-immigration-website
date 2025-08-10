@@ -43,7 +43,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <button 
               onClick={() => handleNavClick('home')}
               className="text-foreground hover:text-primary transition-colors"
@@ -53,8 +53,8 @@ const Header = () => {
             
             {/* 移民服务下拉菜单 */}
             <div className="relative group">
-              <button className="text-foreground hover:text-primary transition-colors flex items-center space-x-1">
-                <span>移民服务</span>
+              <button className="text-foreground hover:text-primary transition-colors flex items-center space-x-1 whitespace-nowrap">
+                <span>移民</span>
                 <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -89,8 +89,8 @@ const Header = () => {
 
             {/* 留学服务下拉菜单 */}
             <div className="relative group">
-              <button className="text-foreground hover:text-primary transition-colors flex items-center space-x-1">
-                <span>留学服务</span>
+              <button className="text-foreground hover:text-primary transition-colors flex items-center space-x-1 whitespace-nowrap">
+                <span>留学</span>
                 <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -125,8 +125,8 @@ const Header = () => {
 
             {/* 商务服务下拉菜单 */}
             <div className="relative group">
-              <button className="text-foreground hover:text-primary transition-colors flex items-center space-x-1">
-                <span>商务服务</span>
+              <button className="text-foreground hover:text-primary transition-colors flex items-center space-x-1 whitespace-nowrap">
+                <span>商务</span>
                 <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -200,44 +200,44 @@ const Header = () => {
             {/* 免费资源 */}
             <Link 
               to="/resources" 
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-foreground hover:text-primary transition-colors whitespace-nowrap"
               onClick={() => {
                 trackEvent('click', 'nav_resources');
                 setIsMobileMenuOpen(false);
               }}
             >
-              免费资源
+              资源
             </Link>
 
             {/* 在线咨询 */}
             <Link 
               to="/consultation?service=通用咨询" 
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-foreground hover:text-primary transition-colors whitespace-nowrap"
               onClick={() => {
                 trackEvent('click', 'nav_consultation');
                 setIsMobileMenuOpen(false);
               }}
             >
-              在线咨询
+              咨询
             </Link>
 
             <button 
               onClick={() => handleNavClick('about')}
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-foreground hover:text-primary transition-colors whitespace-nowrap"
             >
-              关于我们
+              关于
             </button>
             <button 
               onClick={() => handleNavClick('contact')}
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-foreground hover:text-primary transition-colors whitespace-nowrap"
             >
-              联系我们
+              联系
             </button>
           </nav>
 
           {/* Desktop Contact Info & CTA */}
-          <div className="hidden md:flex items-center space-x-4">
-            <div className="hidden lg:flex items-center space-x-4 text-sm">
+          <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
+            <div className="hidden xl:flex items-center space-x-3 text-sm">
               <div className="flex items-center space-x-1 text-muted-foreground">
                 <Phone className="w-4 h-4" />
                 <span>13720010295</span>
