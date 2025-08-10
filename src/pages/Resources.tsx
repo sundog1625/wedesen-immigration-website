@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Download, FileText, Calculator, CheckCircle } from "lucide-react";
 import SEOHead from '@/components/SEOHead';
+import SocialShare from '@/components/SocialShare';
 
 const Resources = () => {
   const resourceCategories = [
@@ -215,6 +216,19 @@ const Resources = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Social Share */}
+          <div className="mt-12 bg-white rounded-lg shadow-md p-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">分享有用资源</h2>
+            <p className="text-gray-600 mb-4">
+              如果这些资源对您有帮助，欢迎分享给更多需要的朋友
+            </p>
+            <SocialShare 
+              url="https://wedeseneu.com/resources"
+              title="欧洲移民免费资源中心 - WEDESEN德森"
+              description="免费的荷兰德国意大利移民评估工具、详细指南和成功案例分析。专业移民咨询12年经验。"
+            />
           </div>
 
           {/* CTA Section */}

@@ -21,6 +21,16 @@ const SocialShare: React.FC<SocialShareProps> = ({
 
   const shareLinks = [
     {
+      name: "小红书",
+      icon: <span className="w-4 h-4 text-center">📱</span>,
+      color: "bg-pink-500 hover:bg-pink-600",
+      action: () => {
+        // 小红书分享需要特殊处理，这里提供复制链接功能
+        navigator.clipboard.writeText(`${title}\n\n${description}\n\n链接: ${url}\n\n关注我们的小红书：https://www.xiaohongshu.com/user/profile/5f16f3eb000000000100b01f`);
+        alert("内容已复制，请在小红书中粘贴分享");
+      }
+    },
+    {
       name: "微信朋友圈",
       icon: <MessageCircle className="w-4 h-4" />,
       color: "bg-green-500 hover:bg-green-600",

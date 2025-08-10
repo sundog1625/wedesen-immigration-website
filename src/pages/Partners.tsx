@@ -111,6 +111,20 @@ const Partners = () => {
       ]
     },
     {
+      title: "媒体与社交平台",
+      description: "通过社交媒体平台分享真实移民经验和欧洲生活",
+      icon: <Users className="w-6 h-6" />,
+      partners: [
+        {
+          name: "WEDESEN德森小红书",
+          description: "分享真实欧洲生活体验、移民政策解读和成功案例",
+          url: "https://www.xiaohongshu.com/user/profile/5f16f3eb000000000100b01f?xsec_token=ABhGWZc1MU-LmiTFSYhKhVLwXewcWbpwGPtc15e0voRxQ%3D&xsec_source=pc_search",
+          logo: "/partners/xiaohongshu-logo.png",
+          verified: true
+        }
+      ]
+    },
+    {
       title: "技术合作伙伴",
       description: "为客户提供全方位服务的技术与服务合作伙伴",
       icon: <Globe className="w-6 h-6" />,

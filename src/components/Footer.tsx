@@ -101,6 +101,22 @@ const Footer = () => {
                 <p className="text-sm text-primary-foreground/80">12年专业经验</p>
                 <p className="text-sm font-medium text-accent">1000+ 成功案例</p>
               </div>
+              <div>
+                <h5 className="font-medium mb-2">关注我们</h5>
+                <div className="flex items-center space-x-3">
+                  <a 
+                    href="https://www.xiaohongshu.com/user/profile/5f16f3eb000000000100b01f?xsec_token=ABhGWZc1MU-LmiTFSYhKhVLwXewcWbpwGPtc15e0voRxQ%3D&xsec_source=pc_search"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-primary-foreground/80 hover:text-accent transition-colors bg-primary-foreground/10 px-3 py-1 rounded-full flex items-center space-x-1"
+                    title="关注WEDESEN德森小红书账号"
+                  >
+                    <span>📱</span>
+                    <span>小红书</span>
+                  </a>
+                </div>
+                <p className="text-xs text-primary-foreground/60 mt-1">欧洲生活分享</p>
+              </div>
             </div>
           </div>
         </div>
