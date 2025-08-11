@@ -71,7 +71,29 @@ const AppRoutes = () => {
       <Route path="/resources" element={<Resources />} />
       <Route path="/partners" element={<Partners />} />
       
-      {/* GEO优化页面 - 生成式引擎优化 */}
+      {/* 新的SEO友好咨询路由 */}
+      <Route path="/consultation/general" element={<ConsultationFormEnhanced />} />
+      <Route path="/consultation/immigration" element={<ConsultationFormEnhanced />} />
+      <Route path="/consultation/netherlands-immigration" element={<ConsultationFormEnhanced />} />
+      <Route path="/consultation/germany-immigration" element={<ConsultationFormEnhanced />} />
+      <Route path="/consultation/europe-education" element={<ConsultationFormEnhanced />} />
+      <Route path="/consultation/netherlands-services" element={<ConsultationFormEnhanced />} />
+      <Route path="/consultation/eligibility-assessment" element={<ConsultationFormEnhanced />} />
+      <Route path="/consultation/free-assessment" element={<ConsultationFormEnhanced />} />
+      
+      {/* 新的国家特定路由 */}
+      <Route path="/netherlands/immigration-benefits" element={<WhyDutchImmigrationSimple />} />
+      <Route path="/netherlands/education-benefits" element={<WhyDutchEducationSimple />} />
+      
+      {/* 新的指南路由 */}
+      <Route path="/guides/netherlands-immigration" element={<NetherlandsImmigrationGuide />} />
+      <Route path="/guides/germany-immigration" element={<GermanyImmigrationGuide />} />
+      <Route path="/guides/smart-immigration" element={<AIOptimizedContent />} />
+      
+      {/* 新的工具路由 */}
+      <Route path="/tools/immigration-recommendations" element={<GEOLandingPage />} />
+      
+      {/* GEO优化页面 - 保留旧路由以兼容 */}
       <Route path="/ai-recommended-immigration" element={<GEOLandingPage />} />
       <Route path="/ai-optimized-immigration-guide" element={<AIOptimizedContent />} />
       

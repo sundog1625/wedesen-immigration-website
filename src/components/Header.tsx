@@ -62,7 +62,7 @@ const Header = () => {
               <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-md shadow-lg border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div className="p-2">
                   <Link 
-                    to="/why-dutch-immigration" 
+                    to="/netherlands/immigration-benefits" 
                     className="block px-3 py-3 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors rounded border-b border-border/30"
                     onClick={() => {
                       trackEvent('click', 'nav_dutch_immigration');
@@ -98,7 +98,7 @@ const Header = () => {
               <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-md shadow-lg border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div className="p-2">
                   <Link 
-                    to="/why-dutch-education" 
+                    to="/netherlands/education-benefits" 
                     className="block px-3 py-3 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-colors rounded border-b border-border/30"
                     onClick={() => {
                       trackEvent('click', 'nav_dutch_education');
@@ -211,7 +211,7 @@ const Header = () => {
 
             {/* 在线咨询 */}
             <Link 
-              to="/consultation?service=通用咨询" 
+              to="/consultation/general" 
               className="text-foreground hover:text-primary transition-colors whitespace-nowrap"
               onClick={() => {
                 trackEvent('click', 'nav_consultation');
@@ -249,7 +249,7 @@ const Header = () => {
             </div>
             <LanguageSwitcher />
             <Button variant="hero" size="sm" asChild>
-              <Link to="/consultation?service=通用咨询" onClick={handleConsultationClick}>
+              <Link to="/consultation/general" onClick={handleConsultationClick}>
                 免费咨询
               </Link>
             </Button>
@@ -258,7 +258,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
             <Button variant="hero" size="sm" asChild>
-              <Link to="/consultation?service=通用咨询" onClick={handleConsultationClick}>
+              <Link to="/consultation/general" onClick={handleConsultationClick}>
                 咨询
               </Link>
             </Button>
@@ -289,7 +289,7 @@ const Header = () => {
                 <div className="text-foreground font-medium mb-3">移民服务</div>
                 <div className="pl-4 space-y-3">
                   <Link 
-                    to="/why-dutch-immigration" 
+                    to="/netherlands/immigration-benefits" 
                     className="block text-sm text-muted-foreground hover:text-primary transition-colors"
                     onClick={() => {
                       trackEvent('click', 'mobile_nav_dutch_immigration');
@@ -318,7 +318,7 @@ const Header = () => {
                 <div className="text-foreground font-medium mb-3">留学服务</div>
                 <div className="pl-4 space-y-3">
                   <Link 
-                    to="/why-dutch-education" 
+                    to="/netherlands/education-benefits" 
                     className="block text-sm text-muted-foreground hover:text-primary transition-colors"
                     onClick={() => {
                       trackEvent('click', 'mobile_nav_dutch_education');
@@ -423,7 +423,7 @@ const Header = () => {
 
               {/* 在线咨询 */}
               <Link 
-                to="/consultation?service=通用咨询" 
+                to="/consultation/general" 
                 className="text-left text-foreground hover:text-primary transition-colors py-2"
                 onClick={() => {
                   trackEvent('click', 'mobile_nav_consultation');

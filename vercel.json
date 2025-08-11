@@ -1,4 +1,84 @@
 {
+  "redirects": [
+    {
+      "source": "/consultation",
+      "has": [{"type": "query", "key": "service", "value": "通用咨询"}],
+      "destination": "/consultation/general",
+      "permanent": true
+    },
+    {
+      "source": "/consultation",
+      "has": [{"type": "query", "key": "service", "value": "移民咨询"}],
+      "destination": "/consultation/immigration",
+      "permanent": true
+    },
+    {
+      "source": "/consultation",
+      "has": [{"type": "query", "key": "service", "value": "荷兰移民咨询"}],
+      "destination": "/consultation/netherlands-immigration",
+      "permanent": true
+    },
+    {
+      "source": "/consultation",
+      "has": [{"type": "query", "key": "service", "value": "德国移民咨询"}],
+      "destination": "/consultation/germany-immigration",
+      "permanent": true
+    },
+    {
+      "source": "/consultation",
+      "has": [{"type": "query", "key": "service", "value": "欧洲留学服务"}],
+      "destination": "/consultation/europe-education",
+      "permanent": true
+    },
+    {
+      "source": "/consultation",
+      "has": [{"type": "query", "key": "service", "value": "荷兰移民服务"}],
+      "destination": "/consultation/netherlands-services",
+      "permanent": true
+    },
+    {
+      "source": "/consultation",
+      "has": [{"type": "query", "key": "service", "value": "移民资格评估"}],
+      "destination": "/consultation/eligibility-assessment",
+      "permanent": true
+    },
+    {
+      "source": "/consultation",
+      "has": [{"type": "query", "key": "service", "value": "免费评估"}],
+      "destination": "/consultation/free-assessment",
+      "permanent": true
+    },
+    {
+      "source": "/why-dutch-immigration",
+      "destination": "/netherlands/immigration-benefits",
+      "permanent": true
+    },
+    {
+      "source": "/why-dutch-education", 
+      "destination": "/netherlands/education-benefits",
+      "permanent": true
+    },
+    {
+      "source": "/netherlands-immigration-guide",
+      "destination": "/guides/netherlands-immigration",
+      "permanent": true
+    },
+    {
+      "source": "/germany-immigration-guide",
+      "destination": "/guides/germany-immigration",
+      "permanent": true
+    },
+    {
+      "source": "/ai-recommended-immigration",
+      "destination": "/tools/immigration-recommendations",
+      "permanent": true
+    },
+    {
+      "source": "/ai-optimized-immigration-guide",
+      "destination": "/guides/smart-immigration",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
